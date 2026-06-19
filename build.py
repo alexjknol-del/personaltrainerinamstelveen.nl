@@ -10,6 +10,7 @@ EMAIL = "info@personaltrainerinamstelveen.nl"
 
 NAV = [
     ("Home", "/"),
+    ("Soorten training", "/soorten-training/"),
     ("Keuzegids", "/beste-personal-trainer-kiezen/"),
     ("Contact", "/contact/"),
 ]
@@ -50,6 +51,7 @@ PROVIDERS = [
   "home":"https://www.yourhealthpt.nl/",
   "domain":"yourhealthpt.nl",
   "anchor":"YourHealth in Amstelveen",
+  "phone":"06 21264241","tel":"+31621264241","email":"info@yourhealthpt.nl","banner":"training-battle-ropes.jpg",
   "usp":[
     "Een van de grootste platforms voor personal training aan huis in Nederland, met een team van meer dan honderd trainers.",
     "Ruime keuze aan specialisaties, van kracht en conditie tot boksen, herstel en medische training.",
@@ -75,6 +77,7 @@ PROVIDERS = [
   "home":"https://www.letsdoitpt.nl/",
   "domain":"letsdoitpt.nl",
   "anchor":"LET'S DO IT in Amstelveen",
+  "phone":"06 21264241","tel":"+31621264241","email":"info@letsdoitpt.nl","banner":"training-veld-lunges.jpg",
   "usp":[
     "Personal training volledig gericht op vrouwen, met uitsluitend vrouwelijke trainers.",
     "Kennis van de invloed van de menstruatiecyclus, een zwangerschap en de overgang op een training.",
@@ -100,6 +103,7 @@ PROVIDERS = [
   "home":"https://www.jouwpersonaltraineraanhuis.nl/",
   "domain":"jouwpersonaltraineraanhuis.nl",
   "anchor":"Jouw Personal Trainer aan Huis in Amstelveen",
+  "phone":"06 21264241","tel":"+31621264241","email":"info@jouwpersonaltraineraanhuis.nl","banner":"training-50plus.jpg",
   "usp":[
     "Veel ervaring met 40-plussers en 50-plussers die fit willen blijven.",
     "Aandacht voor kracht, balans en soepel bewegen, met een geleidelijke opbouw.",
@@ -210,6 +214,7 @@ def footer():
       <div>
         <a class="brand" href="/"><img src="/assets/icons/logo-mark.png" alt="" width="38" height="38"><span>Personal Trainer<small>in Amstelveen</small></span></a>
         <p>Onafhankelijk overzicht dat helpt bij het vinden van een passende personal trainer in Amstelveen en omgeving.</p>
+        <span class="footer-flag"><span class="flagchip sm"><img src="/assets/img/amstelveen-vlag.svg" alt="Vlag van Amstelveen"></span> Lokaal in Amstelveen</span>
       </div>
       <div>
         <h4>Aanbieders</h4>
@@ -218,6 +223,7 @@ def footer():
       <div>
         <h4>Info</h4>
         <ul>
+          <li><a href="/soorten-training/">Soorten training</a></li>
           <li><a href="/beste-personal-trainer-kiezen/">Keuzegids</a></li>
           <li><a href="/contact/">Contact</a></li>
           <li><a href="/privacybeleid/">Privacybeleid</a></li>
@@ -299,8 +305,9 @@ def home():
            path,[website,org,itemlist,fld])
     h+=header("/")
     h+=f"""<section class="hero">
-  <div class="hero-inner">
-    <span class="eyebrow">{IC['pin']}Amstelveen en omgeving</span>
+  <div class="hero-inner hero-grid">
+    <div>
+    <span class="eyebrow"><span class="flagchip"><img src="/assets/img/amstelveen-vlag.svg" alt="Vlag van Amstelveen"></span>Amstelveen en omgeving</span>
     <h1>De beste <em>personal trainer</em> in Amstelveen vinden</h1>
     <p class="lead">Een goede personal trainer maakt het verschil tussen afzien en volhouden. Dit overzicht legt uit waar een trainer aan moet voldoen en licht drie aanbevolen aanbieders uit, voor training aan huis en buiten.</p>
     <div class="hero-actions">
@@ -311,6 +318,10 @@ def home():
       <span>{IC['check']}Training aan huis en buiten</span>
       <span>{IC['check']}Proefles mogelijk</span>
       <span>{IC['check']}Geen abonnement nodig</span>
+    </div>
+    </div>
+    <div class="hero-media">
+      <img src="/assets/img/foto/hero-training.jpg" alt="Personal training buiten in Amstelveen" width="960" height="1280">
     </div>
   </div>
 </section>
@@ -346,6 +357,24 @@ def home():
     </div>
     <div class="steps">{steps}</div>
     <p style="margin-top:24px"><a class="btn btn-ghost" href="/beste-personal-trainer-kiezen/">Lees de volledige keuzegids {IC['arrow']}</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="flagchip"><img src="/assets/img/amstelveen-vlag.svg" alt="Vlag van Amstelveen"></span>In en om Amstelveen</span>
+      <h2>Training in beeld</h2>
+      <p>Personal training speelt zich af waar het past: in het park, langs het water, in de duinen of gewoon thuis in de tuin.</p>
+    </div>
+    <div class="gallery">
+      <img src="/assets/img/foto/training-water-zonsondergang.jpg" alt="Personal training langs het water bij zonsondergang" loading="lazy">
+      <img src="/assets/img/foto/training-veld-lunges.jpg" alt="Lunges tijdens een buitentraining" loading="lazy">
+      <img src="/assets/img/foto/training-agility.jpg" alt="Loopladder tijdens training in het park" loading="lazy">
+      <img src="/assets/img/foto/training-park-bankjes.jpg" alt="Oefeningen op een parkbankje" loading="lazy">
+      <img src="/assets/img/foto/training-polder.jpg" alt="Rekoefening in een Hollands polderlandschap" loading="lazy">
+      <img src="/assets/img/foto/training-kettlebell.jpg" alt="Kettlebell-oefening buiten" loading="lazy">
+    </div>
   </div>
 </section>
 
@@ -430,10 +459,12 @@ def provider_page(p):
     <span class="eyebrow" style="color:{p['cc']}">{IC[p['badge_ic']]}{esc(p['badge'])}</span>
     <h1>{esc(p['name'])} in Amstelveen</h1>
     <p class="lead">{esc(p['lead'])}</p>
+    <div class="prov-banner"><img src="/assets/img/foto/{p['banner']}" alt="Personal training in Amstelveen" loading="lazy"></div>
     <ul class="usp" style="--cc:{p['cc']};margin:24px 0 6px">{usp}</ul>
     {secs}
     <div class="callout" style="background:var(--paper-2);border-left:5px solid {p['cc']}">
       <p><strong>Past dit bij het doel?</strong> Bekijk het aanbod en de tarieven rechtstreeks bij {ext(p['url'], p['anchor'], p['cc'])}.</p>
+      <p style="margin-bottom:0">Direct contact: <a href="tel:{p['tel']}">{p['phone']}</a> of <a href="mailto:{p['email']}">{p['email']}</a>.</p>
     </div>
     <p><a href="/#trainers">Terug naar alle aanbevolen trainers</a></p>
   </div>
@@ -450,22 +481,81 @@ def provider_page(p):
     h+=footer()
     write(path,h)
 
+def soorten_training():
+    path="/soorten-training/"
+    crumbs=[("Home","/"),("Soorten training",path)]
+    TYPES=[
+     ("dumbbell","Personal training aan huis","Een trainer komt met de materialen naar het adres. Trainen kan binnen of in de tuin, op een vast moment dat in de week past."),
+     ("pin","Outdoor personal training","Buiten trainen op een plek in de buurt, zoals het Amsterdamse Bos, het Broersepark of het Jac. P. Thijssepark. Frisse lucht en wisselende oefeningen houden de training afwisselend."),
+     ("users","Duo training","Samen trainen met een partner, vriend of collega. Bij de aanbevolen aanbieders traint een tweede persoon vaak zonder meerkosten mee."),
+     ("dumbbell","Personal boxing","Een intensieve workout waarbij het hele lichaam in actie is. Goed voor kracht en conditie, en een prettige uitlaatklep na een werkdag. Er wordt met en niet tegen elkaar getraind."),
+     ("medal","Medische en hersteltraining","Training bij of na een blessure, of ter voorbereiding op een operatie. De oefeningen worden afgestemd op de klachten. Ook training vanuit een rolstoel hoort tot de mogelijkheden."),
+     ("target","Training rond de zwangerschap","Verantwoord bewegen tijdens en na de zwangerschap, afgestemd op de fase. Dit helpt klachten te beperken en ondersteunt het herstel na de bevalling."),
+     ("clock","Training bij 40-plus en de overgang","Gericht werken aan kracht, balans en energie vanaf het veertigste, met aandacht voor de veranderingen rond de overgang."),
+     ("chat","Personal coaching","Naast de fysieke training aandacht voor mindset en balans, voor het verminderen van stress en het stellen van grenzen."),
+     ("users","Bedrijfsfitness","Met collega's buiten in groepsverband werken aan kracht en conditie, toegankelijk ongeacht niveau of leeftijd."),
+    ]
+    cards="".join(f'<div class="crit"><div class="ic">{IC[ic]}</div><h3>{esc(t)}</h3><p>{esc(d)}</p></div>' for ic,t,d in TYPES)
+    ld=[breadcrumb(crumbs),
+        {"@context":"https://schema.org","@type":"WebPage","@id":BASE+path,"url":BASE+path,"name":"Soorten personal training in Amstelveen","inLanguage":"nl-NL","isPartOf":{"@id":BASE+"/#website"}},
+        {"@context":"https://schema.org","@type":"ItemList","name":"Soorten personal training","itemListElement":[{"@type":"ListItem","position":i,"name":t} for i,(ic,t,d) in enumerate(TYPES,1)]}]
+    h=head("Soorten personal training in Amstelveen | "+SITE,
+           "Van training aan huis en outdoor training tot duo, boksen, herstel, zwangerschap, 40-plus en coaching. Een overzicht van de soorten personal training in Amstelveen.",
+           path,ld)
+    h+=header("/soorten-training/")
+    h+=crumbs_html(crumbs)
+    h+=f"""<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="flagchip"><img src="/assets/img/amstelveen-vlag.svg" alt="Vlag van Amstelveen"></span>Soorten training</span>
+      <h1>Soorten personal training</h1>
+      <p>Personal training kent veel vormen. De aanbevolen aanbieders in Amstelveen bieden onder meer de onderstaande soorten, aan huis en buiten. Welke vorm past, hangt af van het doel, de conditie en de voorkeur.</p>
+    </div>
+    <div class="prov-banner"><img src="/assets/img/foto/training-duo-park.jpg" alt="Duo personal training in een park in Amstelveen" loading="lazy"></div>
+    <div class="types">{cards}</div>
+    <div class="callout" style="margin-top:36px">
+      <p><strong>Niet zeker welke vorm past?</strong> De <a href="/beste-personal-trainer-kiezen/">keuzegids</a> helpt bij het kiezen, of neem rechtstreeks contact op via de <a href="/contact/">contactpagina</a>.</p>
+    </div>
+  </div>
+</section>
+<section class="section sand tight">
+  <div class="wrap">
+    <div class="gallery">
+      <img src="/assets/img/foto/training-herstel.jpg" alt="Hersteltraining met weerstandsband vanuit een rolstoel" loading="lazy">
+      <img src="/assets/img/foto/training-aan-huis.jpg" alt="Personal training aan huis in de tuin" loading="lazy">
+      <img src="/assets/img/foto/training-battle-ropes.jpg" alt="Training met battle ropes" loading="lazy">
+    </div>
+  </div>
+</section>"""
+    h+=footer()
+    write(path,h)
+
 def contact():
     path="/contact/"
     crumbs=[("Home","/"),("Contact",path)]
+    icons={"phone":'<svg viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+           "mail":'<svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8"/></svg>'}
+    cards=""
+    for p in PROVIDERS:
+        cards+=f"""<div class="ccard" style="--cc:{p['cc']}">
+        <span class="tag">{esc(p['badge'])}</span>
+        <h3>{esc(p['name'])}</h3>
+        <a class="row" href="tel:{p['tel']}">{icons['phone']}{p['phone']}</a>
+        <a class="row" href="mailto:{p['email']}">{icons['mail']}{p['email']}</a>
+        <div class="ext"><a href="{p['url']}" target="_blank" rel="noopener">{esc(p['anchor'])} {IC['arrow']}</a></div>
+      </div>"""
     ld=[breadcrumb(crumbs),{"@context":"https://schema.org","@type":"ContactPage","@id":BASE+path,"url":BASE+path,"name":"Contact","inLanguage":"nl-NL"}]
-    h=head("Contact | "+SITE,"Een vraag of suggestie over personal training in Amstelveen? Neem contact op per e-mail.",path,ld)
+    h=head("Contact | "+SITE,"Een afspraak of vraag over personal training in Amstelveen? Neem rechtstreeks contact op met een van de drie aanbevolen aanbieders.",path,ld)
     h+=header("/contact/")
     h+=crumbs_html(crumbs)
     h+=f"""<section class="section">
   <div class="wrap">
-    <div class="contact-card">
-      <span class="eyebrow" style="justify-content:center;color:#FF7A55">{IC['chat']}Contact</span>
-      <h1>Een vraag of suggestie?</h1>
-      <p>Dit is een informatieve site over personal training in Amstelveen, zonder contactformulier. Een bericht per e-mail is welkom, bijvoorbeeld voor een vraag, een tip of een suggestie voor een aanbieder.</p>
-      <a class="mail" href="mailto:{EMAIL}">{EMAIL}</a>
-      <div><a class="btn btn-primary" href="mailto:{EMAIL}">Stuur een e-mail {IC['arrow']}</a></div>
+    <div class="section-head">
+      <span class="eyebrow"><span class="flagchip"><img src="/assets/img/amstelveen-vlag.svg" alt="Vlag van Amstelveen"></span>Contact</span>
+      <h1>Contact opnemen</h1>
+      <p>Voor een afspraak, een proefles of een vraag over personal training is het het handigst om rechtstreeks contact op te nemen met een van de drie aanbevolen aanbieders. Hieronder staan de gegevens op een rij.</p>
     </div>
+    <div class="contact-cards">{cards}</div>
   </div>
 </section>"""
     h+=footer()
@@ -539,7 +629,7 @@ def not_found():
     open(os.path.join(OUT,"404.html"),"w",encoding="utf-8").write(h)
 
 def extras():
-    urls=["/","/beste-personal-trainer-kiezen/","/contact/","/privacybeleid/","/cookiebeleid/"]
+    urls=["/","/soorten-training/","/beste-personal-trainer-kiezen/","/contact/","/privacybeleid/","/cookiebeleid/"]
     urls+=[f"/aanbieders/{p['slug']}/" for p in PROVIDERS]
     body='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for u in urls:
@@ -560,7 +650,7 @@ def main():
     if os.path.exists(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT,exist_ok=True)
     copy_assets()
-    home(); guide()
+    home(); guide(); soorten_training()
     for p in PROVIDERS: provider_page(p)
     contact(); privacy(); cookies(); not_found(); extras()
     print("Build klaar in",OUT)

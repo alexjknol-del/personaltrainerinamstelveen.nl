@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 60" role="img" aria-label="Vlag van Amstelveen">
+  <!-- vijf banen rood-zwart-rood-zwart-rood, 9:10:9:10:9 -->
+  <rect x="0" y="0" width="90" height="60" fill="#D62828"/>
+  <rect x="0" y="11.49" width="90" height="12.77" fill="#1A1A1A"/>
+  <rect x="0" y="35.74" width="90" height="12.77" fill="#1A1A1A"/>
+  <!-- vier witte schuinkruisjes: drie op de bovenste zwarte baan, een op het midden van de onderste -->
+  <g stroke="#FFFFFF" stroke-width="2.1" stroke-linecap="round">
+    <g transform="translate(22.5 17.87)"><line x1="-4.2" y1="-4.6" x2="4.2" y2="4.6"/><line x1="-4.2" y1="4.6" x2="4.2" y2="-4.6"/></g>
+    <g transform="translate(45 17.87)"><line x1="-4.2" y1="-4.6" x2="4.2" y2="4.6"/><line x1="-4.2" y1="4.6" x2="4.2" y2="-4.6"/></g>
+    <g transform="translate(67.5 17.87)"><line x1="-4.2" y1="-4.6" x2="4.2" y2="4.6"/><line x1="-4.2" y1="4.6" x2="4.2" y2="-4.6"/></g>
+    <g transform="translate(45 42.12)"><line x1="-4.2" y1="-4.6" x2="4.2" y2="4.6"/><line x1="-4.2" y1="4.6" x2="4.2" y2="-4.6"/></g>
+  </g>
+</svg>
