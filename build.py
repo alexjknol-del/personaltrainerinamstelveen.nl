@@ -165,6 +165,7 @@ def head(title, desc, path, jsonld=None, article=False):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="L9e-TNNMkNa6xWaECQt9L1AyQr6Dazfpp-A8KYZbh18">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{canonical}">
