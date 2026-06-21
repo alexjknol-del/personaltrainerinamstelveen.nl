@@ -25,6 +25,7 @@ IC = {
  "chat":'<svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 3V5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
  "clock":'<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  "dumbbell":'<svg viewBox="0 0 24 24" fill="none"><path d="M3 9v6M6 7v10M18 7v10M21 9v6M6 12h12" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>',
+"play":'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
  "users":'<svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 5.5a3 3 0 0 1 0 5.8M16.5 19a5.5 5.5 0 0 0-2-3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
 }
 
@@ -239,7 +240,9 @@ def footer():
   </div>
 </footer>
 <script>
-(function(){{var t=document.querySelector('.nav-toggle'),m=document.getElementById('menu');if(t&&m){{t.addEventListener('click',function(){{var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o);}});}}}})();
+(function(){{var t=document.querySelector('.nav-toggle'),m=document.getElementById('menu');if(t&&m){{t.addEventListener('click',function(){{var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o);}});}}
+function loadVid(el){{var id=el.getAttribute('data-yt');if(!id||el.dataset.loaded)return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';f.title=el.getAttribute('aria-label')||'YouTube-video';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.setAttribute('allowfullscreen','');f.loading='lazy';el.innerHTML='';el.appendChild(f);el.dataset.loaded='1';el.classList.add('playing');el.removeAttribute('role');el.removeAttribute('tabindex');}}
+document.querySelectorAll('.video[data-yt]').forEach(function(el){{el.addEventListener('click',function(){{loadVid(el);}});el.addEventListener('keydown',function(e){{if(e.key==='Enter'||e.key===' '){{e.preventDefault();loadVid(el);}}}});}});}})();
 </script>
 </body>
 </html>"""
@@ -262,6 +265,13 @@ def crumbs_html(items):
 def ext(url, anchor, cc=None):
     style=f' style="--cc:{cc}"' if cc else ""
     return f'<a href="{url}" target="_blank" rel="noopener"{style}>{anchor}</a>'
+
+def video(vid, title, label=None):
+    lab=f'<span class="vlabel">{esc(label)}</span>' if label else ''
+    return f'''<div class="video" data-yt="{vid}" role="button" tabindex="0" aria-label="Video afspelen: {esc(title)}">
+        <img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+        <span class="play"><span>{IC['play']}</span></span>{lab}
+      </div>'''
 
 def faq_block(items):
     inner="".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in items)
@@ -346,6 +356,20 @@ def home():
       <p>Drie aanbieders die personal training aan huis en buiten verzorgen in Amstelveen, elk met een eigen accent. De keuze hangt af van het doel en de voorkeur.</p>
     </div>
     <div class="providers">{cards}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow" style="justify-content:center">{IC['play']}Op video</span>
+      <h2>Zo ziet personal training eruit</h2>
+      <p>Een korte introductie over wat personal training inhoudt en hoe een traject verloopt.</p>
+    </div>
+    <div class="video-intro">
+      {video('5zxbknolK-4','Introductie personal training')}
+      <p class="video-note">De video laadt pas na een klik. Tot die tijd worden er geen YouTube-cookies geplaatst.</p>
+    </div>
   </div>
 </section>
 
@@ -519,7 +543,21 @@ def soorten_training():
     </div>
   </div>
 </section>
-<section class="section sand tight">
+<section class="section sand">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow" style="justify-content:center">{IC['play']}Workouts</span>
+      <h2>Workouts om mee te doen</h2>
+      <p>Twee voorbeeldworkouts geven een indruk van het soort oefeningen tijdens een training.</p>
+    </div>
+    <div class="video-grid">
+      {video('XmJ0CBz_yx0','Workout om mee te doen')}
+      {video('UF2TX53ifjc','Workout om mee te doen')}
+    </div>
+    <p class="video-note">De videos laden pas na een klik. Tot die tijd worden er geen YouTube-cookies geplaatst.</p>
+  </div>
+</section>
+<section class="section tight">
   <div class="wrap">
     <div class="gallery">
       <img src="/assets/img/foto/training-herstel.jpg" alt="Hersteltraining met weerstandsband vanuit een rolstoel" loading="lazy">
@@ -610,6 +648,8 @@ def cookies():
     <p>Wel kan het hostingplatform technische gegevens verwerken die nodig zijn om de site veilig en betrouwbaar te tonen. Dat gebeurt op basis van een gerechtvaardigd belang en zonder het volgen van individuele bezoekers.</p>
     <h2>Externe content</h2>
     <p>Voor de weergave van lettertypen maakt de site gebruik van een externe bron, waarbij een verzoek naar die dienst gaat om de lettertypen te laden. Bij het volgen van een link naar een externe website gelden de cookieregels van die website.</p>
+    <h2>Video van YouTube</h2>
+    <p>Op enkele pagina's staan videos van YouTube. Deze laden bewust pas na een klik op de afspeelknop. Tot dat moment wordt alleen een voorbeeldafbeelding van YouTube getoond en wordt er geen YouTube-cookie geplaatst. Na een klik laadt de video via youtube-nocookie.com, de privacyvriendelijke variant van YouTube. Vanaf dat moment kan YouTube cookies plaatsen voor de werking van de speler. Wie dat wil voorkomen, klikt de video niet aan.</p>
     <h2>Cookies beheren</h2>
     <p>Cookies zijn via de browserinstellingen te bekijken en te verwijderen. In de meeste browsers is het mogelijk om cookies te blokkeren of een melding te krijgen voordat een cookie wordt geplaatst.</p>
   </div>

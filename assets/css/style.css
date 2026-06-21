@@ -233,3 +233,20 @@ strong{font-weight:700}
 
 /* inline pijl in tekstlinks (o.a. contactkaarten) op tekstgrootte houden */
 .ccard .ext a svg, .prose p a svg, .callout a svg{width:16px;height:16px;vertical-align:middle}
+
+/* ---- video embeds (klik-om-te-laden, privacyvriendelijk) ---- */
+.video-intro{max-width:880px;margin:0 auto}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:760px){.video-grid{grid-template-columns:1fr}}
+.video{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;margin:0;border-radius:18px;overflow:hidden;background:var(--ink);cursor:pointer;box-shadow:var(--shadow-sm)}
+.video img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .25s var(--ease),transform .4s var(--ease)}
+.video:hover img,.video:focus-visible img{opacity:.65;transform:scale(1.04)}
+.video .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.video .play span{width:74px;height:74px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.55);transition:transform .2s var(--ease)}
+.video:hover .play span,.video:focus-visible .play span{transform:scale(1.09)}
+.video .play svg{width:30px;height:30px;color:#fff;margin-left:4px}
+.video .vlabel{position:absolute;left:0;right:0;bottom:0;padding:30px 18px 15px;color:#fff;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.02rem;text-align:left;background:linear-gradient(transparent,rgba(0,0,0,.72));pointer-events:none}
+.video.playing{cursor:default;background:#000}
+.video.playing .play,.video.playing .vlabel,.video.playing img{display:none}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-note{font-size:.85rem;color:var(--ink-soft);margin-top:14px;text-align:center}
