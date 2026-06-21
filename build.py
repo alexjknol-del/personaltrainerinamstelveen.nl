@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 # personaltrainerinamstelveen.nl static site generator
-import os, json, html, shutil
+import os, json, html, shutil, hashlib
+
+def _ver(relpath):
+    try: return hashlib.md5(open(os.path.join(os.path.dirname(__file__),relpath),'rb').read()).hexdigest()[:8]
+    except Exception: return "1"
 
 BASE = "https://personaltrainerinamstelveen.nl"
 SITE = "Personal Trainer in Amstelveen"
 OUT = os.path.join(os.path.dirname(__file__), "site")
 SRC = os.path.dirname(__file__)
 EMAIL = "info@personaltrainerinamstelveen.nl"
+CSS_VER = _ver("assets/css/style.css")
 
 NAV = [
     ("Home", "/"),
@@ -184,7 +189,7 @@ def head(title, desc, path, jsonld=None, article=False):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v={CSS_VER}">
 {blocks}</head>
 <body>
 """
@@ -270,7 +275,7 @@ def video(vid, title, label=None):
     lab=f'<span class="vlabel">{esc(label)}</span>' if label else ''
     return f'''<div class="video" data-yt="{vid}" role="button" tabindex="0" aria-label="Video afspelen: {esc(title)}">
         <img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-        <span class="play"><span>{IC['play']}</span></span>{lab}
+        <span class="play"><span><svg width="30" height="30" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>{lab}
       </div>'''
 
 def faq_block(items):
