@@ -373,7 +373,6 @@ def home():
     </div>
     <div class="video-intro">
       {video('5zxbknolK-4','Introductie personal training')}
-      <p class="video-note">De video laadt pas na een klik. Tot die tijd worden er geen YouTube-cookies geplaatst.</p>
     </div>
   </div>
 </section>
@@ -559,7 +558,6 @@ def soorten_training():
       {video('XmJ0CBz_yx0','Workout om mee te doen')}
       {video('UF2TX53ifjc','Workout om mee te doen')}
     </div>
-    <p class="video-note">De videos laden pas na een klik. Tot die tijd worden er geen YouTube-cookies geplaatst.</p>
   </div>
 </section>
 <section class="section tight">
