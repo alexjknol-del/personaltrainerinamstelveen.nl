@@ -13,7 +13,7 @@
   --accent-soft:#FBE3D8;
   --line:#E7E2D8;
   --c1:#E8542B; /* YourHealth */
-  --c2:#C13E73; /* LET'S DO IT */
+  --c2:#D89B1F; /* LET'S DO IT okergeel */
   --c3:#157A6E; /* Jouw Personal Trainer aan Huis */
   --maxw:1140px;
   --r:16px;
@@ -163,6 +163,7 @@ strong{font-weight:700}
 .cta-band h2{color:#fff;max-width:22ch;margin:0 auto .4em}
 .cta-band p{color:#FFE6DC;max-width:54ch;margin:0 auto 26px}
 .cta-band .btn-dark{background:var(--ink)}
+.cta-band.dark-text h2,.cta-band.dark-text p{color:var(--ink)}
 
 /* prose */
 .article{padding:54px 0 72px}
@@ -218,12 +219,12 @@ strong{font-weight:700}
 @media(max-width:860px){.contact-cards{grid-template-columns:1fr}}
 .ccard{background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--cc,var(--accent));border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow-sm)}
 .ccard h3{margin:0 0 4px;font-size:1.2rem}
-.ccard .tag{font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cc,var(--accent));margin-bottom:6px}
+.ccard .tag{font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ct,var(--cc,var(--accent)));margin-bottom:6px}
 .ccard .row{display:flex;align-items:center;gap:10px;font-size:1rem;text-decoration:none;color:var(--ink)}
-.ccard .row svg{width:18px;height:18px;color:var(--cc,var(--accent));flex:0 0 auto}
-.ccard a.row:hover{color:var(--cc,var(--accent))}
+.ccard .row svg{width:18px;height:18px;color:var(--ct,var(--cc,var(--accent)));flex:0 0 auto}
+.ccard a.row:hover{color:var(--ct,var(--cc,var(--accent)))}
 .ccard .ext{margin-top:8px}
-.ccard .ext a{font-weight:700;font-size:.92rem;color:var(--cc,var(--accent))}
+.ccard .ext a{font-weight:700;font-size:.92rem;color:var(--ct,var(--cc,var(--accent)))}
 
 .prov-banner{margin:0 0 28px}
 .prov-banner img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;display:block}

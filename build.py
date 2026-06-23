@@ -57,7 +57,7 @@ PROVIDERS = [
   "home":"https://www.yourhealthpt.nl/",
   "domain":"yourhealthpt.nl",
   "anchor":"YourHealth in Amstelveen",
-  "phone":"06 21264241","tel":"+31621264241","email":"info@yourhealthpt.nl","banner":"training-battle-ropes.jpg",
+  "phone":"06 21264241","tel":"+31621264241","email":"info@yourhealthpt.nl","banner":"prov-yh.jpg","ct":"#C8431F","tc":"#fff","dark":False,
   "usp":[
     "Een van de grootste platforms voor personal training aan huis in Nederland, met een team van meer dan honderd trainers.",
     "Ruime keuze aan specialisaties, van kracht en conditie tot boksen, herstel en medische training.",
@@ -83,7 +83,7 @@ PROVIDERS = [
   "home":"https://www.letsdoitpt.nl/",
   "domain":"letsdoitpt.nl",
   "anchor":"LET'S DO IT in Amstelveen",
-  "phone":"06 21264241","tel":"+31621264241","email":"info@letsdoitpt.nl","banner":"training-veld-lunges.jpg",
+  "phone":"06 21264241","tel":"+31621264241","email":"info@letsdoitpt.nl","banner":"prov-ldi.jpg","ct":"#9A6F0C","tc":"#18222D","dark":True,
   "usp":[
     "Personal training volledig gericht op vrouwen, met uitsluitend vrouwelijke trainers.",
     "Kennis van de invloed van de menstruatiecyclus, een zwangerschap en de overgang op een training.",
@@ -109,7 +109,7 @@ PROVIDERS = [
   "home":"https://www.jouwpersonaltraineraanhuis.nl/",
   "domain":"jouwpersonaltraineraanhuis.nl",
   "anchor":"Jouw Personal Trainer aan Huis in Amstelveen",
-  "phone":"06 21264241","tel":"+31621264241","email":"info@jouwpersonaltraineraanhuis.nl","banner":"training-50plus.jpg",
+  "phone":"06 21264241","tel":"+31621264241","email":"info@jouwpersonaltraineraanhuis.nl","banner":"training-50plus.jpg","ct":"#157A6E","tc":"#fff","dark":False,
   "usp":[
     "Veel ervaring met 40-plussers en 50-plussers die fit willen blijven.",
     "Aandacht voor kracht, balans en soepel bewegen, met een geleidelijke opbouw.",
@@ -289,16 +289,16 @@ def provider_card(p):
     return f"""<article class="provider" style="--cc:{p['cc']}">
   <div class="pinner">
     <div class="pmain">
-      <span class="badge" style="--cc:{p['cc']}">{IC[p['badge_ic']]}{esc(p['badge'])}</span>
+      <span class="badge" style="--cc:{p['cc']};color:{p['tc']}">{IC[p['badge_ic']]}{esc(p['badge'])}</span>
       <p class="logo-slot">{esc(p['name'])}</p>
       <p class="tagline">{esc(p['tagline'])}</p>
-      <ul class="usp">{usp}</ul>
+      <ul class="usp" style="--cc:{p['ct']}">{usp}</ul>
     </div>
     <div class="pside">
       <span class="for-who">Past goed bij</span>
       <p class="for-text">{esc(p['for'])}</p>
       <div class="links">
-        <a class="btn btn-primary" style="background:{p['cc']};border-color:{p['cc']}" href="{p['url']}" target="_blank" rel="noopener">{esc(p['anchor'])} {IC['arrow']}</a>
+        <a class="btn btn-primary" style="background:{p['cc']};border-color:{p['cc']};color:{p['tc']}" href="{p['url']}" target="_blank" rel="noopener">{esc(p['anchor'])} {IC['arrow']}</a>
         <a href="/aanbieders/{p['slug']}/">Meer over {esc(p['name'])}</a>
       </div>
     </div>
@@ -337,7 +337,7 @@ def home():
     </div>
     </div>
     <div class="hero-media">
-      <img src="/assets/img/foto/hero-training.jpg" alt="Personal training buiten in Amstelveen" width="960" height="1280">
+      <img src="/assets/img/foto/hero-amstelveen.jpg" alt="Personal training buiten in Amstelveen" width="720" height="1280">
     </div>
   </div>
 </section>
@@ -372,7 +372,7 @@ def home():
       <p>Een korte introductie over wat personal training inhoudt en hoe een traject verloopt.</p>
     </div>
     <div class="video-intro">
-      {video('5zxbknolK-4','Introductie personal training')}
+      {video('iGFk6mJragY','Introductie personal training')}
     </div>
   </div>
 </section>
@@ -397,12 +397,12 @@ def home():
       <p>Personal training speelt zich af waar het past: in het park, langs het water, in de duinen of gewoon thuis in de tuin.</p>
     </div>
     <div class="gallery">
-      <img src="/assets/img/foto/training-water-zonsondergang.jpg" alt="Personal training langs het water bij zonsondergang" loading="lazy">
-      <img src="/assets/img/foto/training-veld-lunges.jpg" alt="Lunges tijdens een buitentraining" loading="lazy">
-      <img src="/assets/img/foto/training-agility.jpg" alt="Loopladder tijdens training in het park" loading="lazy">
-      <img src="/assets/img/foto/training-park-bankjes.jpg" alt="Oefeningen op een parkbankje" loading="lazy">
-      <img src="/assets/img/foto/training-polder.jpg" alt="Rekoefening in een Hollands polderlandschap" loading="lazy">
-      <img src="/assets/img/foto/training-kettlebell.jpg" alt="Kettlebell-oefening buiten" loading="lazy">
+      <img src="/assets/img/foto/gal-1.jpg" alt="Step-ups tijdens een training in het park" loading="lazy">
+      <img src="/assets/img/foto/gal-3.jpg" alt="Kettlebell-oefening in de buitenlucht" loading="lazy">
+      <img src="/assets/img/foto/gal-5.jpg" alt="Loopladder tijdens een duotraining in het park" loading="lazy">
+      <img src="/assets/img/foto/gal-2.jpg" alt="Buitentraining langs het water" loading="lazy">
+      <img src="/assets/img/foto/gal-4.jpg" alt="Training met gewichten op het strand" loading="lazy">
+      <img src="/assets/img/foto/gal-6.jpg" alt="Groep na een gezamenlijke training" loading="lazy">
     </div>
   </div>
 </section>
@@ -485,11 +485,11 @@ def provider_page(p):
     h+=crumbs_html(crumbs)
     h+=f"""<article class="article">
   <div class="wrap narrow prose">
-    <span class="eyebrow" style="color:{p['cc']}">{IC[p['badge_ic']]}{esc(p['badge'])}</span>
+    <span class="eyebrow" style="color:{p['ct']}">{IC[p['badge_ic']]}{esc(p['badge'])}</span>
     <h1>{esc(p['name'])} in Amstelveen</h1>
     <p class="lead">{esc(p['lead'])}</p>
     <div class="prov-banner"><img src="/assets/img/foto/{p['banner']}" alt="Personal training in Amstelveen" loading="lazy"></div>
-    <ul class="usp" style="--cc:{p['cc']};margin:24px 0 6px">{usp}</ul>
+    <ul class="usp" style="--cc:{p['ct']};margin:24px 0 6px">{usp}</ul>
     {secs}
     <div class="callout" style="background:var(--paper-2);border-left:5px solid {p['cc']}">
       <p><strong>Past dit bij het doel?</strong> Bekijk het aanbod en de tarieven rechtstreeks bij {ext(p['url'], p['anchor'], p['cc'])}.</p>
@@ -500,7 +500,7 @@ def provider_page(p):
 </article>
 <section class="section tight">
   <div class="wrap">
-    <div class="cta-band" style="background:{p['cc']}">
+    <div class="cta-band{' dark-text' if p['dark'] else ''}" style="background:{p['cc']}">
       <h2>{esc(p['name'])} in Amstelveen</h2>
       <p>Vraag een intake met proefles aan en ervaar of de werkwijze en de trainer passen.</p>
       <a class="btn btn-dark" href="{p['url']}" target="_blank" rel="noopener">Naar {esc(p['domain'])} {IC['arrow']}</a>
@@ -579,7 +579,7 @@ def contact():
            "mail":'<svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8"/></svg>'}
     cards=""
     for p in PROVIDERS:
-        cards+=f"""<div class="ccard" style="--cc:{p['cc']}">
+        cards+=f"""<div class="ccard" style="--cc:{p['cc']};--ct:{p['ct']}">
         <span class="tag">{esc(p['badge'])}</span>
         <h3>{esc(p['name'])}</h3>
         <a class="row" href="tel:{p['tel']}">{icons['phone']}{p['phone']}</a>
