@@ -367,12 +367,12 @@ def home():
 <section class="section">
   <div class="wrap">
     <div class="section-head center">
-      <span class="eyebrow" style="justify-content:center">{IC['play']}Op video</span>
-      <h2>Zo ziet personal training eruit</h2>
-      <p>Een korte introductie over wat personal training inhoudt en hoe een traject verloopt.</p>
+      <span class="eyebrow" style="justify-content:center">{IC['play']}Sfeerbeeld</span>
+      <h2>Personal training in de buitenlucht</h2>
+      <p>Een korte sfeerimpressie van trainen in en om Amstelveen.</p>
     </div>
     <div class="video-intro">
-      {video('iGFk6mJragY','Introductie personal training')}
+      {video('iGFk6mJragY','Sfeerbeeld personal training in Amstelveen')}
     </div>
   </div>
 </section>
