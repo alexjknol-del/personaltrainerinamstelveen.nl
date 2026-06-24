@@ -247,6 +247,7 @@ def footer():
 <script>
 (function(){{var t=document.querySelector('.nav-toggle'),m=document.getElementById('menu');if(t&&m){{t.addEventListener('click',function(){{var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o);}});}}
 function loadVid(el){{var id=el.getAttribute('data-yt');if(!id||el.dataset.loaded)return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';f.title=el.getAttribute('aria-label')||'YouTube-video';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.setAttribute('allowfullscreen','');f.loading='lazy';el.innerHTML='';el.appendChild(f);el.dataset.loaded='1';el.classList.add('playing');el.removeAttribute('role');el.removeAttribute('tabindex');}}
+var hv=document.querySelector('.sfeer-video video');if(hv&&window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){{hv.removeAttribute('autoplay');try{{hv.pause();}}catch(e){{}}}}
 document.querySelectorAll('.video[data-yt]').forEach(function(el){{el.addEventListener('click',function(){{loadVid(el);}});el.addEventListener('keydown',function(e){{if(e.key==='Enter'||e.key===' '){{e.preventDefault();loadVid(el);}}}});}});}})();
 </script>
 </body>
@@ -371,8 +372,10 @@ def home():
       <h2>Personal training in de buitenlucht</h2>
       <p>Een korte sfeerimpressie van trainen in en om Amstelveen.</p>
     </div>
-    <div class="video-intro">
-      {video('iGFk6mJragY','Sfeerbeeld personal training in Amstelveen')}
+    <div class="sfeer-video">
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg" aria-label="Sfeerbeeld personal training in Amstelveen">
+        <source src="/assets/video/hero-amstelveen.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
