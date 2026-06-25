@@ -375,7 +375,7 @@ def home():
       <p>Een korte video over de aanpak en de drie aanbevolen aanbieders.</p>
     </div>
     <div class="sfeer-video">
-      <video controls autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg?v={HERO_POSTER_VER}" aria-label="Video over personal training in Amstelveen">
+      <video controls playsinline preload="metadata" poster="/assets/img/hero-poster.jpg?v={HERO_POSTER_VER}" aria-label="Video over personal training in Amstelveen">
         <source src="/assets/video/hero-amstelveen.mp4?v={HERO_VID_VER}" type="video/mp4">
       </video>
     </div>
