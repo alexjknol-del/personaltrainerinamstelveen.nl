@@ -254,4 +254,4 @@ strong{font-weight:700}
 
 /* ---- sfeerbeeld-video in sectie ---- */
 .sfeer-video{max-width:880px;margin:0 auto;border-radius:18px;overflow:hidden;background:#080809;aspect-ratio:16/9;box-shadow:0 18px 50px rgba(24,34,45,.16)}
-.sfeer-video video{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transform-origin:center}
+.sfeer-video video{display:block;width:100%;height:100%;object-fit:cover}

@@ -12,6 +12,8 @@ OUT = os.path.join(os.path.dirname(__file__), "site")
 SRC = os.path.dirname(__file__)
 EMAIL = "info@personaltrainerinamstelveen.nl"
 CSS_VER = _ver("assets/css/style.css")
+HERO_VID_VER = _ver("assets/video/hero-amstelveen.mp4")
+HERO_POSTER_VER = _ver("assets/img/hero-poster.jpg")
 
 NAV = [
     ("Home", "/"),
@@ -368,13 +370,13 @@ def home():
 <section class="section">
   <div class="wrap">
     <div class="section-head center">
-      <span class="eyebrow" style="justify-content:center">{IC['play']}Sfeerbeeld</span>
-      <h2>Personal training in de buitenlucht</h2>
-      <p>Een korte sfeerimpressie van trainen in en om Amstelveen.</p>
+      <span class="eyebrow" style="justify-content:center">{IC['play']}Op video</span>
+      <h2>Personal training in Amstelveen in het kort</h2>
+      <p>Een korte video over de aanpak en de drie aanbevolen aanbieders.</p>
     </div>
     <div class="sfeer-video">
-      <video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg" aria-label="Sfeerbeeld personal training in Amstelveen">
-        <source src="/assets/video/hero-amstelveen.mp4" type="video/mp4">
+      <video controls autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg?v={HERO_POSTER_VER}" aria-label="Video over personal training in Amstelveen">
+        <source src="/assets/video/hero-amstelveen.mp4?v={HERO_VID_VER}" type="video/mp4">
       </video>
     </div>
   </div>
